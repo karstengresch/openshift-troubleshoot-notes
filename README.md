@@ -3,8 +3,9 @@ Personal notes (problem - solution) on how to solve OpenShift problems I stumble
 
 # Minishift/CDK
 
-### Problem: docker -> *could not read CA certificate "/etc/docker/ca.pem": open /etc/docker/ca.pem: no such file or directory
-* 
+### Problem
+
+  `$>docker -> could not read CA certificate "/etc/docker/ca.pem": open /etc/docker/ca.pem: no such file or directory`
 
 OS: F25
 
