@@ -17,7 +17,7 @@ OS: F25
 
 ### Problem
 
-  `minishift start --cpus 6 --memory=10240 --service-registry --my@user.name --ocp-tag v3.6.173.0.5`
+  `minishift start --cpus 6 --memory=10240 --service-catalog --my@user.name --ocp-tag v3.6.173.0.5`
 
 gives
 
