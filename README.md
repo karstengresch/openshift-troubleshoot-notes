@@ -28,3 +28,13 @@ gives
   `export MINISHIFT_ENABLE_EXPERIMENTAL=y`
 
 (via https://docs.openshift.org/latest/minishift/using/experimental-features.html)
+
+# Images
+
+### Problem: OpenJDK missing in default
+
+### Solution
+
+  `oc import-image my-redhat-openjdk-18/openjdk18-openshift --from=registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift --confirm`
+  
+(ImageStream definition from https://gist.githubusercontent.com/tqvarnst/3ca512b01b7b7c1a1da0532939350e23/raw/3869a54c7dd960965f0e66907cdc3eba6d160cad/openjdk-s2i-imagestream.json )
