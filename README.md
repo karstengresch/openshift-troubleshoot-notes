@@ -25,6 +25,6 @@ gives
 
 ### Solution
 
-  `MINISHIFT_ENABLE_EXPERIMENTAL=y`
+  `export MINISHIFT_ENABLE_EXPERIMENTAL=y`
 
 (via https://docs.openshift.org/latest/minishift/using/experimental-features.html)
