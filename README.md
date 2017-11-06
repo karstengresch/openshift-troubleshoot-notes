@@ -31,7 +31,7 @@ gives
 
 # Images
 
-### Problem: OpenJDK missing in default
+### Problem: OpenJDK image missing in default
 
 ### Solution
 
@@ -39,7 +39,9 @@ gives
   oc login -u system:admin
   oc import-image my-redhat-openjdk-18/openjdk18-openshift --from=registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift --confirm
   ```
-  
+
+(ImageStream definition for the Java image from https://gist.githubusercontent.com/tqvarnst/3ca512b01b7b7c1a1da0532939350e23/raw/3869a54c7dd960965f0e66907cdc3eba6d160cad/openjdk-s2i-imagestream.json )
+
 or - if also 7.1 images are missing:
   
   ```
@@ -47,5 +49,3 @@ or - if also 7.1 images are missing:
   oc create -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/jboss-image-streams.json -n openshift
  ```
 
-
-(ImageStream definition from https://gist.githubusercontent.com/tqvarnst/3ca512b01b7b7c1a1da0532939350e23/raw/3869a54c7dd960965f0e66907cdc3eba6d160cad/openjdk-s2i-imagestream.json )
