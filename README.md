@@ -35,10 +35,10 @@ gives
 
 ### Solution
 
-  ```
+  ```
   oc login -u system:admin
-  oc import-image my-redhat-openjdk-18/openjdk18-openshift --from=registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift --confirm
-  ```
+  oc import-image my-redhat-openjdk-18/openjdk18-openshift --from=registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift --confirm
+  ```
   
 or - if also 7.1 images are missing:
   
