@@ -55,11 +55,18 @@ You have defined an image stream from https://github.com/jboss-openshift/applica
  
 Now you want to add an application to your project but, the image is not loaded. Looking up the import command from https://registry.access.redhat.com doesn't help.
 
+When working via the UI, you get an error message like
+
+```
+An error occurred while starting the deployment. Reason: cannot trigger a deployment for "yourappname" because it contains unresolved images
+```
+
+
 ### Solution
  
   ```
   oc create -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/jboss-image-streams.json -n openshift
   ```
- 
+If this doesn't work, go to in the Web UI to ~Applications~->~Deployments~->Listbox ~Actions~->~Edit~ and change the image stream tag.
  
 
