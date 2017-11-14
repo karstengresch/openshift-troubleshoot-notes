@@ -48,4 +48,18 @@ or - if also 7.1 images are missing:
   oc login -u system:admin
   oc create -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/jboss-image-streams.json -n openshift
  ```
+ 
+### Problem: JBoss Image Stream defined, but image not resolved
+ 
+You have defined an image stream from https://github.com/jboss-openshift/application-templates (latest and greatest).
+ 
+Now you want to add an application to your project but, the image is not loaded. Looking up the import command from https://registry.access.redhat.com doesn't help.
+
+### Solution
+ 
+  ```
+  oc create -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/jboss-image-streams.json -n openshift
+  ```
+ 
+ 
 
