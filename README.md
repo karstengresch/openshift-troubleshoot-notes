@@ -88,8 +88,8 @@ Delete the entire project and wait:
 
 (Minishift)
 
-    ```
+    
     oc login -u developer -p developer
     oc new-project apimanagement
     oc new-app --file https://raw.githubusercontent.com/3scale/3scale-amp-openshift-templates/master/amp/amp.yml --param WILDCARD_DOMAIN=$(minishift ip).nip.io
-    ```
+    
