@@ -9,11 +9,16 @@ Personal notes (problem - solution) on how to solve OpenShift problems I stumble
 
 OS: F25
 
-### Solution
+### Solution (I)
 
   `docker --tlscacert=/home/<USERNAME>/.minishift/certs/ca.pem --tlscert=/home/<USERNAME>/.minishift/certs/cert.pem --tlskey=/home/<USERNAME>/.minishift/certs/key.pem info`
 
-(via https://github.com/minishift/minishift/issues/552)
+(via https://github.com/minishift/minishift/issues/552)``
+
+### Discussion
+
+
+
 
 ### Problem
 
@@ -61,12 +66,30 @@ When working via the UI, you get an error message like
 An error occurred while starting the deployment. Reason: cannot trigger a deployment for "yourappname" because it contains unresolved images
 ```
 
-
 ### Solution
  
   ```
   oc create -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/jboss-image-streams.json -n openshift
   ```
 If this doesn't work, go to in the Web UI to ~Applications~->~Deployments~->Listbox ~Actions~->~Edit~ and change the image stream tag.
- 
 
+### Problem: 3scale Redis pod not comming up after 
+
+Error description:
+
+  `Bad file format reading the append only file: make a backup of your AOF file, then use ./redis-check-aof --fix <filename>`
+
+https://github.com/antirez/redis/issues/3232 doesn't work as Pod doesn't come up.
+
+
+### Workaround
+
+Delete the entire project and wait:
+
+(Minishift)
+
+    ```
+    oc login -u developer -p developer
+    oc new-project apimanagement
+    oc new-app --file https://raw.githubusercontent.com/3scale/3scale-amp-openshift-templates/master/amp/amp.yml --param WILDCARD_DOMAIN=$(minishift ip).nip.io
+    ```
