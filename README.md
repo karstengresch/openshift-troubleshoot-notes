@@ -9,7 +9,7 @@ Personal notes (problem - solution) on how to solve OpenShift problems I stumble
 
 OS: F25
 
-### Solution (I)
+### Solution
 
   `docker --tlscacert=/home/<USERNAME>/.minishift/certs/ca.pem --tlscert=/home/<USERNAME>/.minishift/certs/cert.pem --tlskey=/home/<USERNAME>/.minishift/certs/key.pem info`
 
@@ -34,7 +34,11 @@ gives
 
 (via https://docs.openshift.org/latest/minishift/using/experimental-features.html)
 
-# Images
+### Discussion
+
+
+
+# (Specific) Images
 
 ### Problem: OpenJDK image missing in default
 
@@ -53,6 +57,11 @@ or - if also 7.1 images are missing:
   oc login -u system:admin
   oc create -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/jboss-image-streams.json -n openshift
  ```
+ 
+ ### Discussion
+
+
+
  
 ### Problem: JBoss Image Stream defined, but image not resolved
  
@@ -73,7 +82,14 @@ An error occurred while starting the deployment. Reason: cannot trigger a deploy
   ```
 If this doesn't work, go to in the Web UI to ~Applications~->~Deployments~->Listbox ~Actions~->~Edit~ and change the image stream tag.
 
-### Problem: 3scale Redis pod not comming up after 
+### Discussion
+
+
+
+
+
+
+### Problem: 3scale Redis pod not comming up, especially after restarting your OpenShift (Minishift) reboot 
 
 Error description:
 
@@ -93,3 +109,8 @@ Delete the entire project and wait:
     oc new-project apimanagement
     oc new-app --file https://raw.githubusercontent.com/3scale/3scale-amp-openshift-templates/master/amp/amp.yml --param WILDCARD_DOMAIN=$(minishift ip).nip.io
     
+
+### Discussion
+
+
+
