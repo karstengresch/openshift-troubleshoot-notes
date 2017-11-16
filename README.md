@@ -36,7 +36,33 @@ gives
 
 ### Discussion
 
+### Problem
+Minishift does not start due to driver check errors, e.g.
 
+```
+minishift start --cpus 7 --memory=26624 --skip-registration --ocp-tag v3.6.173.0.21
+-- Checking if KVM driver is installed ... 
+   Driver is available at /usr/local/bin/docker-machine-driver-kvm ... 
+   Checking driver binary is executable ... OK
+-- Checking if Libvirt is installed ... OK
+-- Checking if Libvirt default network is present and active ... FAIL
+   See the 'Setting Up the Driver Plug-in' topic for more information
+```
+
+
+### Solution
+
+For KVM/libvirt on Linux, run the following command:
+
+    `$ minishift config set warn-check-kvm-driver true`
+For xhyve on macOS, run the following command:
+
+    `$ minishift config set warn-check-xhyve-driver true`
+For Hyper-V on Windows, run the following command:
+
+    `$ minishift config set warn-check-hyperv-driver true`
+    
+(via https://access.redhat.com/documentation/en-us/red_hat_container_development_kit/3.2/html-single/getting_started_guide/#minishift-startup-check-failed)    
 
 # (Specific) Images
 
