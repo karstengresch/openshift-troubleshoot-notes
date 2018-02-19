@@ -7,18 +7,39 @@ Personal notes (problem - solution) on how to solve OpenShift problems I stumble
 
   `$>docker -> could not read CA certificate "/etc/docker/ca.pem": open /etc/docker/ca.pem: no such file or directory`
 
-OS: F25
-
-### Solution
+### Solution (?) - F25
 
   `docker --tlscacert=/home/<USERNAME>/.minishift/certs/ca.pem --tlscert=/home/<USERNAME>/.minishift/certs/cert.pem --tlskey=/home/<USERNAME>/.minishift/certs/key.pem info`
 
 (via https://github.com/minishift/minishift/issues/552)``
 
+
+### Solution - F27
+Edit */etc/sysconfig/docker*
+
+Replace
+
+   `DOCKER_CERT_PATH=/etc/docker`
+   
+with 
+     
+   ```
+   if [ -z "${DOCKER_CERT_PATH}" ]; then
+    DOCKER_CERT_PATH=/etc/docker
+fi
+   ```
+
+
 ### Discussion
+As per the Minishift documentation, after enabling and applying the Docker registry route, you try to execute the commands advised:
 
+```
+$ eval $(minishift docker-env)
+$ eval $(minishift oc-env)
+$ docker login -u developer -p `oc whoami -t` docker-registry-default.192.168.42.225.nip.io:443
+```
 
-
+And you get the afore mentioned error.
 
 ### Problem
 
